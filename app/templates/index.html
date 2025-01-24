@@ -1,60 +1,104 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block title %}Inicio{% endblock title %}
 
 {% block content %}
-    <div class="container text-center py-5">
-        <!-- Título principal -->
-        <h1 class="display-3 text-primary">Bienvenido a <strong>MyLibraryList</strong></h1>
-        <p class="lead text-muted">Organiza, clasifica y gestiona tus libros favoritos en un solo lugar.</p>
-        
-        <!-- Imagen destacada -->
-        <img src="{{ url_for('static', filename='img/libreria.png') }}" class="img-fluid my-4 rounded w-50" alt="Gestión de libros">
-
-        <hr class="my-5">
-
-        <!-- Funcionalidades principales -->
-        <h2 class="mb-4">¿Qué puedes hacer?</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary"><i class="bi bi-bookmark"></i> Organiza tu colección</h5>
-                        <p class="card-text">Crea y administra una lista de tus libros favoritos con facilidad.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary"><i class="bi bi-search"></i> Encuentra libros rápidamente</h5>
-                        <p class="card-text">Busca entre tus libros por título, autor o género en segundos.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary"><i class="bi bi-share"></i> Comparte con tus amigos</h5>
-                        <p class="card-text">Recomienda libros y comparte tu colección con otras personas.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-5">
-
-        <!-- Llamado a la acción -->
-        <h2>¡Empieza ahora!</h2>
-        <p class="text-muted">Crea tu cuenta o inicia sesión para comenzar a gestionar tu biblioteca personal.</p>
-        <div class="d-flex justify-content-center">
-            <a href="{{ url_for('auth.login') }}" class="btn btn-primary mx-2 btn-lg">Iniciar sesión</a>
-            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary mx-2 btn-lg">Registrarse</a>
-        </div>
-
-        <!-- Pie de página con un mensaje motivador -->
-        <footer class="mt-5 text-muted">
-            <p>&copy; 2025 MyLibraryList. "Un libro bien gestionado es una historia siempre a mano."</p>
-        </footer>
+  <div class="container py-5">
+    <!-- Título y resumen -->
+    <div class="text-center mb-5">
+      <h1>Bienvenido a MyLibraryList</h1>
+      <p>Un lugar para gestionar y descubrir nuevos libros. Explora y administra tu lista de lectura de forma sencilla y práctica.</p>
     </div>
+
+    <!-- Carrusel de Libros Destacados -->
+    <div id="featuredBooksCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://picsum.photos/800/400?random=1" class="d-block w-100" alt="Libro 1">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 15px; opacity: 0.7; max-width: 70%; margin: 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title">Insuperable</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://picsum.photos/800/400?random=2" class="d-block w-100" alt="Libro 2">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 15px; opacity: 0.7; max-width: 70%; margin: 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title">Dragon Ball Super</h5>
+                <p class="card-text">Capitulo 435</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://picsum.photos/800/400?random=3" class="d-block w-100" alt="Libro 3">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 15px; opacity: 0.7; max-width: 70%; margin: 0 auto;">
+              <div class="card-body">
+                <h5 class="card-title">El Quijote</h5>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#featuredBooksCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featuredBooksCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="section-divider">
+      <h3 class="text-center section-title">¿Aún no te has decidido? Estas son algunas de las razones por las que elegir MyLibraryList</h3>
+      <!-- Tres cartas de funciones -->
+      <div class="row mb-5">
+        <div class="col-md-4">
+          <div class="card shadow-lg border-0" style="background-color: #fff; border-radius: 15px;">
+            <img src="https://picsum.photos/800/400?random=1" class="card-img-top" alt="Gestiona tus libros">
+            <div class="card-body">
+              <h5 class="card-title">Gestiona tus Libros</h5>
+              <p class="card-text">Organiza tus libros en una lista, mantén un registro de los que has leído, los que quieres leer y mucho más.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-lg border-0" style="background-color: #fff; border-radius: 15px;">
+            <img src="https://picsum.photos/800/400?random=2" class="card-img-top" alt="Descubre nuevos libros">
+            <div class="card-body">
+              <h5 class="card-title">Descubre Nuevos Libros</h5>
+              <p class="card-text">Explora nuevos títulos y encuentra libros recomendados que se adapten a tus gustos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-lg border-0" style="background-color: #fff; border-radius: 15px;">
+            <img src="https://picsum.photos/800/400?random=3" class="card-img-top" alt="Sincroniza en todos tus dispositivos">
+            <div class="card-body">
+              <h5 class="card-title">No te olvides de ninguno</h5>
+              <p class="card-text">Accede a tu biblioteca personal en cualquier momento, ¡siempre actualizado!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ¿Tienes cuenta? -->
+    <div class="section-divider text-center mt-5">
+      <p>¿Ya tienes cuenta? <a href="{{ url_for('auth.login') }}" class="btn btn-link">Inicia sesión</a> o <a href="{{ url_for('auth.register') }}" class="btn btn-link">Regístrate aquí</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-4 bg-primary text-white">
+      <p>&copy; 2025 MyLibraryList. Todos los derechos reservados.</p>
+    </footer>
+  </div>
 {% endblock content %}

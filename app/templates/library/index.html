@@ -1,65 +1,55 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
-<section class="container my-4">
+<section class="container my-5">
   <!-- Título de la página y botón para agregar nuevo libro -->
-  <nav class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="display-5">Lista de Libros</h1>
-    <a href="{{ url_for('library.create') }}" class="btn btn-success">
-      <i class="bi bi-plus-circle"></i> Nuevo Libro
+  <div class="text-center mb-4">
+    <h1 class="display-4 text-primary">Lista de Libros</h1>
+    <p class="lead">Administra tu colección de libros de manera fácil y rápida.</p>
+    <a href="{{ url_for('library.create') }}" class="btn btn-success btn-lg mt-3">
+      <i class="bi bi-plus-circle"></i> Agregar Nuevo Libro
     </a>
-  </nav>
+  </div>
 
-  <!-- Tabla de libros -->
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Título</th>
-          <th>Autor</th>
-          <th>Género</th>
-          <th>Fecha de Publicación</th>
-          <th>Estado</th>
-          <th>Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for libro in libros %}
-        {% if g.user.id == libro.created_by %}
-        <tr>
-          <td><strong>{{ libro.title }}</strong></td>
-          <td>{{ libro.author }}</td>
-          <td>{{ libro.genre }}</td>
-          <td>{{ libro.published_date.strftime('%d/%m/%Y') }}</td>
-          <td>
-            {% if libro.state %}
-            <span class="badge bg-success">Leido</span>
-            {% else %}
-            <span class="badge bg-danger">No leido</span>
-            {% endif %}
-          </td>
-          <td>
-            <div class="d-flex gap-2">
-              <a href="{{url_for('library.update', id = libro.id)}}" class="btn btn-info btn-sm">
+  <!-- Lista de libros con tarjetas horizontales -->
+  <div class="list-group">
+    {% for libro in libros %}
+      {% if g.user.id == libro.created_by %}
+        <div class="list-group-item d-flex align-items-center mb-3 shadow-lg rounded-3">
+          <div class="d-flex w-100">
+            <!-- Contenido de la tarjeta -->
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ libro.title }}</h5>
+              <p class="mb-1"><strong>Autor:</strong> {{ libro.author }}</p>
+              <p class="mb-1"><strong>Género:</strong> {{ libro.genre }}</p>
+              <p class="mb-1"><strong>Fecha:</strong> {{ libro.published_date.strftime('%d/%m/%Y') }}</p>
+
+              <span class="badge {% if libro.state %} bg-success {% else %} bg-danger {% endif %}">
+                {% if libro.state %} Leído {% else %} No leído {% endif %}
+              </span>
+            </div>
+
+            <!-- Botones de acción dentro de la tarjeta, alineados verticalmente -->
+            <div class="ms-3 d-flex flex-column justify-content-between">
+              <a href="{{ url_for('library.update', id=libro.id) }}" class="btn btn-info btn-sm mb-2">
                 <i class="bi bi-pencil"></i> Editar
               </a>
-              <form action="{{url_for('library.delete', id = libro.id)}}" method="POST" style="display: inline;">
+              <form action="{{ url_for('library.delete', id=libro.id) }}" method="POST" style="display: inline;">
                 <button type="submit" class="btn btn-danger btn-sm">
                   <i class="bi bi-trash"></i> Eliminar
                 </button>
               </form>
             </div>
-          </td>
-        </tr>
-        {% endif %}
-        {% else %}
-        <tr>
-          <td colspan="6" class="text-center">No hay libros disponibles.</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="col-12">
+        <div class="alert alert-warning text-center" role="alert">
+          No hay libros disponibles en tu lista.
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </section>
-
 {% endblock content %}

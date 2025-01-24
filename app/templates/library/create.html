@@ -1,48 +1,58 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="container my-4">
-  <h3 class="text-center display-6 mb-4">{% block title %} Añadir Libro {% endblock title %}</h3>
+<section class="container my-5">
+  <!-- Título de la sección -->
+  <h3 class="text-center display-4 text-primary mb-4">{% block title %} Añadir Nuevo Libro {% endblock title %}</h3>
 
-  <div class="card shadow">
+  <!-- Tarjeta de formulario -->
+  <div class="card shadow-lg border-0 rounded-3">
     <div class="card-body">
       <form action="{{ url_for('library.create') }}" method="post">
-        <div class="mb-3">
-          <label for="title" class="form-label"><strong>Título</strong></label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="Título del libro" required>
+        
+        <!-- Campo Título -->
+        <div class="mb-4">
+          <label for="title" class="form-label"><strong>Título del Libro</strong></label>
+          <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Introduce el título del libro" required>
         </div>
 
-        <div class="mb-3">
-          <label for="author" class="form-label"><strong>Autor</strong></label>
-          <input type="text" class="form-control" id="author" name="author" placeholder="Autor del libro" required>
+        <!-- Campo Autor -->
+        <div class="mb-4">
+          <label for="author" class="form-label"><strong>Autor del Libro</strong></label>
+          <input type="text" class="form-control form-control-lg" id="author" name="author" placeholder="Introduce el nombre del autor" required>
         </div>
 
-        <div class="mb-3">
+        <!-- Campo Género -->
+        <div class="mb-4">
           <label for="genre" class="form-label"><strong>Género</strong></label>
-          <input type="text" class="form-control" id="genre" name="genre" placeholder="Género del libro" required>
+          <input type="text" class="form-control form-control-lg" id="genre" name="genre" placeholder="Introduce el género del libro" required>
         </div>
 
-        <div class="mb-3">
+        <!-- Campo Fecha de Publicación -->
+        <div class="mb-4">
           <label for="published_date" class="form-label"><strong>Fecha de Publicación</strong></label>
-          <input type="date" class="form-control" id="published_date" name="published_date" required>
+          <input type="date" class="form-control form-control-lg" id="published_date" name="published_date" required>
         </div>
 
-        <div class="mb-3">
+        <!-- Campo Estado -->
+        <div class="mb-4">
           <label for="state" class="form-label"><strong>Estado</strong></label>
-          <select class="form-select" id="state" name="state">
+          <select class="form-select form-select-lg" id="state" name="state">
             <option value="true">Leído</option>
-            <option value="false" selected>No leído</option>
+            <option value="false" selected>No Leído</option>
           </select>
         </div>
 
-        <div class="d-flex justify-content-center gap-3">
-          <button type="submit" class="btn btn-primary">
+        <!-- Botones -->
+        <div class="d-flex justify-content-center gap-4">
+          <button type="submit" class="btn btn-primary btn-lg">
             <i class="bi bi-save"></i> Guardar
           </button>
-          <a href="{{ url_for('library.index') }}" class="btn btn-secondary">
+          <a href="{{ url_for('library.index') }}" class="btn btn-secondary btn-lg">
             <i class="bi bi-x-circle"></i> Cancelar
           </a>
         </div>
+        
       </form>
     </div>
   </div>

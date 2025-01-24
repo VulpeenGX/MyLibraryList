@@ -1,5 +1,79 @@
-body{
-    font-family: Arial;
-    margin: 0;
-    background-color: #ffffff;
-}
+/* Gradiente de fondo */
+body {
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Carrusel */
+  .carousel-item img {
+    border-radius: 15px;
+  }
+  
+  /* Sombra y estilo de las tarjetas */
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  /* Botones animados */
+  .btn-primary {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+  
+  .carousel-inner {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
+  
+/* Efecto de Hover en las tarjetas */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);  /* Aumento sutil */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);  /* Sombra más pronunciada */
+  }
+  
+  /* Separación de Secciones */
+  .section-divider {
+    background-color: #f9f9f9;  /* Color suave para separar */
+    padding: 50px 0;
+  }
+  
+  .section-title {
+    border-bottom: 2px solid #007bff;  /* Subrayado sutil */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  
+  /* Fondo más oscuro en la sección del carrusel */
+  .carousel-item {
+    background-color: #f8f9fa;  /* Fondo claro */
+  }
+  
+  /* Estilo de botones de Iniciar Sesión y Registrarse */
+  .btn-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .btn-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
