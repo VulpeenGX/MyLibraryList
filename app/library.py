@@ -44,3 +44,39 @@ def create():
         return redirect(url_for('library.index'))
 
     return render_template('library/create.html')
+
+# para cargar libros en varibles 
+def get_libro(id):
+    libro = Libro.query.get_or_404(id)
+    return libro
+
+#Editar libros
+@bp.route('/update/<int:id>', methods=('GET', 'POST'))
+@login_required
+def update(id):
+    
+    libro = get_libro(id)
+
+    if request.method == 'POST':
+        libro.title = request.form['title']
+        libro.author = request.form['author']
+        libro.genre = request.form['genre']
+        published_date_str = request.form['published_date']
+        libro.state = request.form['state'] == 'true'
+
+        # Pasamos el date de string a objeto date
+        libro.published_date = datetime.strptime(published_date_str, '%Y-%m-%d').date()
+
+        db.session.commit()
+        return redirect(url_for('library.index'))
+
+    return render_template('library/update.html', libro = libro)
+
+#Eliminar libros
+@bp.route('/delete/<int:id>', methods=('POST',)) 
+@login_required
+def delete(id):
+    libro = get_libro(id)
+    db.session.delete(libro)
+    db.session.commit()
+    return redirect(url_for('library.index'))

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container my-4">
+  <h3 class="text-center display-6 mb-4">{% block title %} Editar Libro {% endblock title %}</h3>
+
+  <div class="card shadow">
+    <div class="card-body">
+        <form action="{{ url_for('library.update', id=libro.id) }}" method="post">
+            <div class="mb-3">
+          <label for="title" class="form-label"><strong>Título</strong></label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Título del libro" required value="{{ libro.title}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="author" class="form-label"><strong>Autor</strong></label>
+          <input type="text" class="form-control" id="author" name="author" placeholder="Autor del libro" required value="{{libro.author}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="genre" class="form-label"><strong>Género</strong></label>
+          <input type="text" class="form-control" id="genre" name="genre" placeholder="Género del libro" required value="{{libro.genre}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="published_date" class="form-label"><strong>Fecha de Publicación</strong></label>
+          <input type="date" class="form-control" id="published_date" name="published_date" required value="{{libro.published_date}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="state" class="form-label"><strong>Estado</strong></label>
+          <select class="form-select" id="state" name="state">
+            <option value="true" {% if libro.state %}selected{% endif %}>Leído</option>
+            <option value="false" {% if not libro.state %}selected{% endif %}>No leído</option>
+        </select>
+        
+        </div>
+
+        <div class="d-flex justify-content-center gap-3">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Guardar
+          </button>
+          <a href="{{ url_for('library.index') }}" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}
