@@ -1,0 +1,65 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<section class="container my-4">
+  <!-- Título de la página y botón para agregar nuevo libro -->
+  <nav class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="display-5">Lista de Libros</h1>
+    <a href="{{ url_for('library.create') }}" class="btn btn-success">
+      <i class="bi bi-plus-circle"></i> Nuevo Libro
+    </a>
+  </nav>
+
+  <!-- Tabla de libros -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Género</th>
+          <th>Fecha de Publicación</th>
+          <th>Estado</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for libro in libros %}
+        {% if g.user.id == libro.created_by %}
+        <tr>
+          <td><strong>{{ libro.title }}</strong></td>
+          <td>{{ libro.author }}</td>
+          <td>{{ libro.genre }}</td>
+          <td>{{ libro.published_date.strftime('%d/%m/%Y') }}</td>
+          <td>
+            {% if libro.state %}
+            <span class="badge bg-success">Leido</span>
+            {% else %}
+            <span class="badge bg-danger">No leido</span>
+            {% endif %}
+          </td>
+          <td>
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-info btn-sm">
+                <i class="bi bi-pencil"></i> Editar
+              </a>
+              <form action="#" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash"></i> Eliminar
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endif %}
+        {% else %}
+        <tr>
+          <td colspan="6" class="text-center">No hay libros disponibles.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% endblock content %}

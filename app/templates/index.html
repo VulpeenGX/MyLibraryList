@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+
+{% block title %}Inicio{% endblock title %}
+
+{% block content %}
+    <div class="container text-center py-5">
+        <!-- Título principal -->
+        <h1 class="display-3 text-primary">Bienvenido a <strong>MyLibraryList</strong></h1>
+        <p class="lead text-muted">Organiza, clasifica y gestiona tus libros favoritos en un solo lugar.</p>
+        
+        <!-- Imagen destacada -->
+        <img src="{{ url_for('static', filename='img/libreria.png') }}" class="img-fluid my-4 rounded w-50" alt="Gestión de libros">
+
+        <hr class="my-5">
+
+        <!-- Funcionalidades principales -->
+        <h2 class="mb-4">¿Qué puedes hacer?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-bookmark"></i> Organiza tu colección</h5>
+                        <p class="card-text">Crea y administra una lista de tus libros favoritos con facilidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-search"></i> Encuentra libros rápidamente</h5>
+                        <p class="card-text">Busca entre tus libros por título, autor o género en segundos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary"><i class="bi bi-share"></i> Comparte con tus amigos</h5>
+                        <p class="card-text">Recomienda libros y comparte tu colección con otras personas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Llamado a la acción -->
+        <h2>¡Empieza ahora!</h2>
+        <p class="text-muted">Crea tu cuenta o inicia sesión para comenzar a gestionar tu biblioteca personal.</p>
+        <div class="d-flex justify-content-center">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary mx-2 btn-lg">Iniciar sesión</a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary mx-2 btn-lg">Registrarse</a>
+        </div>
+
+        <!-- Pie de página con un mensaje motivador -->
+        <footer class="mt-5 text-muted">
+            <p>&copy; 2025 MyLibraryList. "Un libro bien gestionado es una historia siempre a mano."</p>
+        </footer>
+    </div>
+{% endblock content %}
