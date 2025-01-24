@@ -47,8 +47,8 @@ cd mylibrarylist
     │   ├── templates/            # Plantillas HTML (base.html, index.html, etc.)
     │   ├── __init__.py           # Configuración de la aplicación Flask
     │   ├── models.py             # Modelos de datos con SQLAlchemy
-    │   ├── routes.py             # Rutas y lógica de la aplicación
-    │   └── forms.py              # Manejo de formularios con Flask-WTF
+    │   ├── auth.py               # Rutas y lógica de las sesiones
+    │   └── library.py            # Rutas y lógica de la aplicación
     │
     ├── instance/
     │   └── app.db                # Base de datos SQLite
