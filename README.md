@@ -35,7 +35,7 @@ Sigue estos pasos para ejecutar la aplicación en tu máquina local:
 ```bash
 git clone https://github.com/tuusuario/mylibrarylist.git
 cd mylibrarylist
-
+```
 ### 📂 Estructura del proyecto
 
  La aplicación está organizada de la siguiente manera:
