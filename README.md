@@ -77,6 +77,6 @@ Esta aplicación utiliza las siguientes herramientas y tecnologías:
 -**JavaScript**: Añade interactividad y mejora la experiencia del usuario.
 
 
-###📝 Contacto
+ ### 📝 Contacto
 Desarrollado por Alejandro Gutiérrez Pereira.
 Estudiante de Desarrollo de Aplicaciones Multiplataforma (DAM).
