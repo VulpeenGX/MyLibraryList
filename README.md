@@ -36,6 +36,22 @@ Sigue estos pasos para ejecutar la aplicación en tu máquina local:
 git clone https://github.com/tuusuario/mylibrarylist.git
 cd mylibrarylist
 ```
+### 2️⃣ Instalar dependencias
+```bash
+npm install
+```
+
+### 3️⃣ Configurar variables de entorno
+```bash
+DATABASE_URL=tu_url_de_base_de_datos
+SECRET_KEY=tu_clave_secreta
+```
+
+### 4️⃣ Ejecutar la aplicación
+```bash
+npm start
+```
+
 ### 📂 Estructura del proyecto
 
  La aplicación está organizada de la siguiente manera:

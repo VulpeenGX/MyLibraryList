@@ -2,39 +2,32 @@
 
 {% block content %}
 <section class="container my-5">
-  <!-- Título de la sección -->
   <h3 class="text-center display-4 text-primary mb-4">{% block title %} Editar Libro {% endblock title %}</h3>
 
-  <!-- Tarjeta de formulario -->
   <div class="card shadow-lg border-0 rounded-3">
     <div class="card-body">
       <form action="{{ url_for('library.update', id=libro.id) }}" method="post">
         
-        <!-- Campo Título -->
         <div class="mb-4">
           <label for="title" class="form-label"><strong>Título del Libro</strong></label>
           <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Introduce el título del libro" required value="{{ libro.title }}">
         </div>
 
-        <!-- Campo Autor -->
         <div class="mb-4">
           <label for="author" class="form-label"><strong>Autor del Libro</strong></label>
           <input type="text" class="form-control form-control-lg" id="author" name="author" placeholder="Introduce el nombre del autor" required value="{{ libro.author }}">
         </div>
 
-        <!-- Campo Género -->
         <div class="mb-4">
           <label for="genre" class="form-label"><strong>Género</strong></label>
           <input type="text" class="form-control form-control-lg" id="genre" name="genre" placeholder="Introduce el género del libro" required value="{{ libro.genre }}">
         </div>
 
-        <!-- Campo Fecha de Publicación -->
         <div class="mb-4">
           <label for="published_date" class="form-label"><strong>Fecha de Publicación</strong></label>
           <input type="date" class="form-control form-control-lg" id="published_date" name="published_date" required value="{{ libro.published_date }}">
         </div>
 
-        <!-- Campo Estado -->
         <div class="mb-4">
           <label for="state" class="form-label"><strong>Estado</strong></label>
           <select class="form-select form-select-lg" id="state" name="state">
@@ -43,7 +36,6 @@
           </select>
         </div>
 
-        <!-- Botones -->
         <div class="d-flex justify-content-center gap-4">
           <button type="submit" class="btn btn-primary btn-lg">
             <i class="bi bi-save"></i> Guardar

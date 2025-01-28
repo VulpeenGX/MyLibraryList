@@ -2,7 +2,6 @@
 
 {% block content %}
 <section class="container my-5">
-  <!-- Título de la página y botón para agregar nuevo libro -->
   <div class="text-center mb-4">
     <h1 class="display-4 text-primary">Lista de Libros</h1>
     <p class="lead">Administra tu colección de libros de manera fácil y rápida.</p>
@@ -17,7 +16,6 @@
       {% if g.user.id == libro.created_by %}
         <div class="list-group-item d-flex align-items-center mb-3 shadow-lg rounded-3">
           <div class="d-flex w-100">
-            <!-- Contenido de la tarjeta -->
             <div class="flex-grow-1">
               <h5 class="mb-1">{{ libro.title }}</h5>
               <p class="mb-1"><strong>Autor:</strong> {{ libro.author }}</p>
@@ -29,7 +27,6 @@
               </span>
             </div>
 
-            <!-- Botones de acción dentro de la tarjeta, alineados verticalmente -->
             <div class="ms-3 d-flex flex-column justify-content-between">
               <a href="{{ url_for('library.update', id=libro.id) }}" class="btn btn-info btn-sm mb-2">
                 <i class="bi bi-pencil"></i> Editar

@@ -4,7 +4,6 @@
 
 {% block content %}
   <div class="container py-5">
-    <!-- Título y resumen -->
     <div class="text-center mb-5">
       <h1>Bienvenido a MyLibraryList</h1>
       <p>Un lugar para gestionar y descubrir nuevos libros. Explora y administra tu lista de lectura de forma sencilla y práctica.</p>
@@ -59,7 +58,6 @@
 
     <div class="section-divider">
       <h3 class="text-center section-title">¿Aún no te has decidido? Estas son algunas de las razones por las que elegir MyLibraryList</h3>
-      <!-- Tres cartas de funciones -->
       <div class="row mb-5">
         <div class="col-md-4">
           <div class="card shadow-lg border-0" style="background-color: #fff; border-radius: 15px;">
@@ -91,12 +89,10 @@
       </div>
     </div>
 
-    <!-- ¿Tienes cuenta? -->
     <div class="section-divider text-center mt-5">
       <p>¿Ya tienes cuenta? <a href="{{ url_for('auth.login') }}" class="btn btn-link">Inicia sesión</a> o <a href="{{ url_for('auth.register') }}" class="btn btn-link">Regístrate aquí</a></p>
     </div>
 
-    <!-- Footer -->
     <footer class="text-center mt-5 py-4 bg-primary text-white">
       <p>&copy; 2025 MyLibraryList. Todos los derechos reservados.</p>
     </footer>
