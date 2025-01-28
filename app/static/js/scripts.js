@@ -1,24 +1,42 @@
-fetch('https://www.googleapis.com/books/v1/volumes?q=programming')
-  .then(response => response.json())
-  .then(data => {
-    const booksContainer = document.getElementById('books-suggestions');
-    data.items.forEach(book => {
-      const card = document.createElement('div');
-      card.className = 'col-md-4 mb-4';
-      card.innerHTML = `
-        <div class="card shadow-lg">
-          <img src="${book.volumeInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/150'}" class="card-img-top" alt="${book.volumeInfo.title}">
-          <div class="card-body">
-            <h5 class="card-title">${book.volumeInfo.title}</h5>
-            <p class="card-text">${book.volumeInfo.description || 'Sin descripción disponible.'}</p>
-          </div>
-        </div>
-      `;
-      booksContainer.appendChild(card);
-    });
-  })
-  .catch(error => {
-    console.error('Error al cargar los libros:', error);
+// Cuadro emergente de guardado
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("cGuardar").addEventListener("click", function () {
+    sessionStorage.setItem("showSaveAlert", "true");
+    sessionStorage.removeItem("showEditAlert"); 
+    sessionStorage.removeItem("showDeleteAlert"); 
+    window.location.href = "{{ url_for('library.index') }}";
   });
+});
 
-  
+document.addEventListener("DOMContentLoaded", function () {
+  if (sessionStorage.getItem("showSaveAlert") === "true") {
+    var alertBox = document.getElementById("customAlert");
+    alertBox.style.display = "block";
+    setTimeout(function () {
+      alertBox.style.display = "none";
+      sessionStorage.removeItem("showSaveAlert");
+    }, 1000);
+  }
+});
+
+// Cuadro emergente de editado
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("uEditar").addEventListener("click", function () {
+    console.log('Botón eliminar clickeado');
+    sessionStorage.setItem("showEditAlert", "true");
+    sessionStorage.removeItem("showSaveAlert"); 
+    sessionStorage.removeItem("showDeleteAlert"); 
+    window.location.href = "{{ url_for('library.index') }}";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (sessionStorage.getItem("showEditAlert") === "true") {
+    var alertBox = document.getElementById("customAlert2");
+    alertBox.style.display = "block";
+    setTimeout(function () {
+      alertBox.style.display = "none";
+      sessionStorage.removeItem("showEditAlert");
+    }, 1000);
+  }
+});
